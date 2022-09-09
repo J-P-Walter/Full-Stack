@@ -9,7 +9,6 @@ function App() {
     fetch("http://localhost:9000/testAPI")
       .then((res) => res.text())
       .then((res) => setApiResponse(res));
-    console.log(apiResponse);
   }, []);
 
   return (
