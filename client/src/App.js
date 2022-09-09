@@ -1,7 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import React from "react";
 
 function App() {
+  const [apiResponse, setApiResponse] = React.useState(null);
+
+  React.useEffect(() => {
+    fetch("http://localhost:9000/testAPI")
+      .then((res) => res.text())
+      .then((res) => setApiResponse(res));
+    console.log(apiResponse);
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +27,7 @@ function App() {
         >
           Learn React
         </a>
+        <p>{apiResponse}</p>
       </header>
     </div>
   );
