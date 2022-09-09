@@ -4,12 +4,28 @@ import React from "react";
 
 function App() {
   const [apiResponse, setApiResponse] = React.useState(null);
+  const [dbResponse, setDbResponse] = React.useState(null);
 
   React.useEffect(() => {
     fetch("http://localhost:9000/testAPI")
       .then((res) => res.text())
       .then((res) => setApiResponse(res));
   }, []);
+
+  React.useEffect(() => {
+    fetch("http://localhost:9000/testDB")
+      .then((res) => res.text())
+      .then((res) => setDbResponse(res))
+      .catch((err) => err);
+  }, []);
+
+  function checkDatabase() {
+    fetch("http://localhost:9000/testDB")
+      .then((res) => res.text())
+      .then((res) => setDbResponse(res))
+      .catch((err) => err);
+    console.log("Clicked");
+  }
 
   return (
     <div className="App">
@@ -27,6 +43,8 @@ function App() {
           Learn React
         </a>
         <p>{apiResponse}</p>
+        <button onClick={checkDatabase}>Check Database</button>
+        <p>{dbResponse}</p>
       </header>
     </div>
   );

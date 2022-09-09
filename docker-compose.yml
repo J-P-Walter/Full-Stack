@@ -2,7 +2,7 @@ version: "2"
 services:
   client:
     image: webapp-client
-    restart: always
+
     ports:
       - "3000:3000"
     working_dir: /client/src/app
@@ -17,7 +17,7 @@ services:
 
   api:
     image: webapp-api
-    restart: always
+
     ports:
       - "9000:9000"
     volumes:
@@ -31,7 +31,7 @@ services:
 
   mongodb:
     image: mongo
-    restart: always
+
     container_name: mongodb
     volumes:
       - ./data-node:/data/db
